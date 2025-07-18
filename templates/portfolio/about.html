@@ -1,0 +1,581 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!-- About Section -->
+
+    <section id="about" style="padding: 80px 0; background: default:">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div style="text-align: center; margin-bottom: 60px;">
+        <h2 class="section-title">
+            About <span class="highlight">Me</span>
+            <span class="title-underline"></span>
+        </h2>
+
+
+        </div>
+
+        {% if about %}
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+        <!-- Image Column -->
+        <div style="flex: 1; min-width: 300px; position: relative;">
+            {% if about.image %}
+            <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);">
+            <img src="{{ about.image.url }}" alt="{{ about.title }}" style="width: 100%; height: auto; display: block; transition: transform 0.3s ease;" />
+            </div>
+            {% endif %}
+            <!-- Education Card -->
+            <div style="background: white; border-radius: 12px; padding: 25px; margin-top: 30px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);">
+            <h3 style="font-size: 1.25rem; color: #1e293b; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                <svg style="width: 24px; height: 24px; color: #3b82f6;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
+                </svg>
+                Education
+            </h3>
+            <p style="color: #475569; margin-bottom: 8px; font-weight: 500;">{{ about.education }}</p>
+            <p style="color: #64748b; font-size: 0.9rem;">Graduated: {{ about.year|date:'Y' }}</p>
+            </div>
+        </div>
+
+        <!-- Content Column -->
+        <div style="flex: 2; min-width: 300px;">
+            <h3 style="font-size: 1.75rem; color: #1e293b; margin-bottom: 20px;">{{ about.title }}</h3>
+            
+            <!-- Intro Card -->
+            <div style="background: white; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); border-left: 4px solid #3b82f6;">
+            <p style="font-size: 1.1rem; color: #475569; line-height: 1.6; margin: 0;">
+                I am a <span style="color: #3b82f6; font-weight: 600;">Software Engineer</span> with a strong foundation in backend development, frontend design, CMS platforms, and project management.
+            </p>
+            </div>
+
+            <!-- Skills Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <!-- Backend Development -->
+            <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); transition: transform 0.3s ease;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <div style="width: 50px; height: 50px; background: #eff6ff; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <svg style="width: 24px; height: 24px; color: #3b82f6;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                    </svg>
+                </div>
+                <h4 style="font-size: 1.25rem; color: #1e293b; margin: 0;">Backend Development</h4>
+                </div>
+                <p style="color: #475569; line-height: 1.6; margin: 0;">
+                Proficient in Python, Django, and Django REST Framework for building robust, secure, and scalable server-side applications and APIs.
+                </p>
+            </div>
+
+            <!-- Frontend Development -->
+            <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); transition: transform 0.3s ease;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <div style="width: 50px; height: 50px; background: #eff6ff; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <svg style="width: 24px; height: 24px; color: #3b82f6;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <h4 style="font-size: 1.25rem; color: #1e293b; margin: 0;">Frontend Development</h4>
+                </div>
+                <ul style="color: #475569; line-height: 1.6; margin: 0; padding-left: 20px;">
+                <li style="margin-bottom: 8px;">Responsive layouts with HTML & CSS</li>
+                <li style="margin-bottom: 8px;">Modern styling using Tailwind CSS & Bootstrap</li>
+                <li>Cross-browser compatibility</li>
+                </ul>
+            </div>
+
+            <!-- WordPress & Shopify -->
+            <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); transition: transform 0.3s ease;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <div style="width: 50px; height: 50px; background: #eff6ff; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <svg style="width: 24px; height: 24px; color: #3b82f6;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                    </svg>
+                </div>
+                <h4 style="font-size: 1.25rem; color: #1e293b; margin: 0;">WordPress & Shopify</h4>
+                </div>
+                <p style="color: #475569; line-height: 1.6; margin: 0;">
+                Proficient in designing and customizing websites and eCommerce stores tailored to client needs.
+                </p>
+            </div>
+
+            <!-- Project Management -->
+            <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); transition: transform 0.3s ease;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <div style="width: 50px; height: 50px; background: #eff6ff; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <svg style="width: 24px; height: 24px; color: #3b82f6;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <h4 style="font-size: 1.25rem; color: #1e293b; margin: 0;">Project Management</h4>
+                </div>
+                <p style="color: #475569; line-height: 1.6; margin: 0;">
+                Strong ability to plan, coordinate, and manage web development projects using Agile methodologies, ensuring timely delivery and quality outcomes.
+                </p>
+            </div>
+            </div>
+        </div>
+        </div>
+        {% endif %}
+    </div>
+    </section>
+
+    <style>
+        
+    /* Hover effects */
+    #about img:hover {
+        transform: scale(1.02);
+    }
+    
+    #about div[style*="background: white;"]:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    }
+    </style>
+
+  <!-- Skills Section -->
+
+  {% comment %} <section>
+    <h2 class="section-title">My Skills</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+      {% for skill in skills %}
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+            <span>{{ skill.title }}</span>
+            <span>{{ skill.proficiency }}%</span>
+          </div>
+          <div style="height: 10px; background: #e9ecef; border-radius: 5px;">
+            <div style="height: 100%; width: {{ skill.proficiency }}%; background: #17a2b8; border-radius: 5px;"></div>
+          </div>
+          <p style="margin-top: 10px; font-size: 14px; color: #6c757d;">{{ skill.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </section> {% endcomment %}
+
+    <section id="skills" style="padding: 80px 0; background: #f8fafc;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div style="text-align: center; margin-bottom: 60px;">
+        <h2 style="font-size: 2.5rem; color: #1e293b; position: relative; display: inline-block;">
+            My <span style="color: #3b82f6;">Skills</span>
+            <span style="content: ''; display: block; width: 60px; height: 4px; background: #3b82f6; margin: 15px auto 0; border-radius: 2px;"></span>
+        </h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <!-- Backend Card -->
+        <div class="skill-card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <div class="skill-header" style="display: flex; align-items: center; padding: 20px; cursor: pointer; background: #eff6ff;">
+            <div style="width: 50px; height: 50px; background: #3b82f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                </svg>
+            </div>
+            <h3 style="margin: 0; font-size: 1.25rem; color: #1e293b;">Backend Development</h3>
+            <svg class="dropdown-icon" style="width: 20px; height: 20px; margin-left: auto; color: #3b82f6; transition: transform 0.3s ease;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+            </div>
+            <div class="skill-content" style="padding: 0 20px; height: 0; overflow: hidden; transition: height 0.3s ease, padding 0.3s ease;">
+            <ul style="list-style: none; padding: 0; margin: 0; padding-bottom: 20px;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Python
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Django
+                </li>
+                <li style="padding: 10px 0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Django REST
+                </li>
+            </ul>
+            </div>
+        </div>
+
+        <!-- Frontend Card -->
+        <div class="skill-card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <div class="skill-header" style="display: flex; align-items: center; padding: 20px; cursor: pointer; background: #eff6ff;">
+            <div style="width: 50px; height: 50px; background: #3b82f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+            </div>
+            <h3 style="margin: 0; font-size: 1.25rem; color: #1e293b;">Frontend Development</h3>
+            <svg class="dropdown-icon" style="width: 20px; height: 20px; margin-left: auto; color: #3b82f6; transition: transform 0.3s ease;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+            </div>
+            <div class="skill-content" style="padding: 0 20px; height: 0; overflow: hidden; transition: height 0.3s ease, padding 0.3s ease;">
+            <ul style="list-style: none; padding: 0; margin: 0; padding-bottom: 20px;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                HTML
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                CSS
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Tailwind CSS
+                </li>
+                <li style="padding: 10px 0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Bootstrap
+                </li>
+            </ul>
+            </div>
+        </div>
+
+        <!-- Shopify Card -->
+        <div class="skill-card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <div class="skill-header" style="display: flex; align-items: center; padding: 20px; cursor: pointer; background: #eff6ff;">
+            <div style="width: 50px; height: 50px; background: #3b82f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                </svg>
+            </div>
+            <h3 style="margin: 0; font-size: 1.25rem; color: #1e293b;">Shopify</h3>
+            <svg class="dropdown-icon" style="width: 20px; height: 20px; margin-left: auto; color: #3b82f6; transition: transform 0.3s ease;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+            </div>
+            <div class="skill-content" style="padding: 0 20px; height: 0; overflow: hidden; transition: height 0.3s ease, padding 0.3s ease;">
+            <ul style="list-style: none; padding: 0; margin: 0; padding-bottom: 20px;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Custom store design
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Product page styling
+                </li>
+                <li style="padding: 10px 0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Bug fixing & updates
+                </li>
+            </ul>
+            </div>
+        </div>
+
+        <!-- WordPress Card -->
+        <div class="skill-card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <div class="skill-header" style="display: flex; align-items: center; padding: 20px; cursor: pointer; background: #eff6ff;">
+            <div style="width: 50px; height: 50px; background: #3b82f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                </svg>
+            </div>
+            <h3 style="margin: 0; font-size: 1.25rem; color: #1e293b;" >WordPress</h3>
+            <svg class="dropdown-icon" style="width: 20px; height: 20px; margin-left: auto; color: #3b82f6; transition: transform 0.3s ease;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+            </div>
+            <div class="skill-content" style="padding: 0 20px; height: 0; overflow: hidden; transition: height 0.3s ease, padding 0.3s ease;">
+            <ul style="list-style: none; padding: 0; margin: 0; padding-bottom: 20px;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Custom theme design
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Landing page creation
+                </li>
+                <li style="padding: 10px 0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Bug fixing & updates
+                </li>
+            </ul>
+            </div>
+        </div>
+
+        <!-- Project Management Card -->
+        <div class="skill-card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <div class="skill-header" style="display: flex; align-items: center; padding: 20px; cursor: pointer; background: #eff6ff;">
+            <div style="width: 50px; height: 50px; background: #3b82f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                </svg>
+            </div>
+            <h3 style="margin: 0; font-size: 1.25rem; color: #1e293b;">Project Management</h3>
+            <svg class="dropdown-icon" style="width: 20px; height: 20px; margin-left: auto; color: #3b82f6; transition: transform 0.3s ease;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+            </div>
+            <div class="skill-content" style="padding: 0 20px; height: 0; overflow: hidden; transition: height 0.3s ease, padding 0.3s ease;">
+            <ul style="list-style: none; padding: 0; margin: 0; padding-bottom: 20px;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                End-to-end project planning
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Agile/Scrum workflow management
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Resource and task allocation
+                </li>
+                <li style="padding: 10px 0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Deliver on time
+                </li>
+            </ul>
+            </div>
+        </div>
+
+        <!-- Database Management Card -->
+        <div class="skill-card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+            <div class="skill-header" style="display: flex; align-items: center; padding: 20px; cursor: pointer; background: #eff6ff;">
+            <div style="width: 50px; height: 50px; background: #3b82f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
+                </svg>
+            </div>
+            <h3 style="margin: 0; font-size: 1.25rem; color: #1e293b;">Database Management</h3>
+            <svg class="dropdown-icon" style="width: 20px; height: 20px; margin-left: auto; color: #3b82f6; transition: transform 0.3s ease;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+            </div>
+            <div class="skill-content" style="padding: 0 20px; height: 0; overflow: hidden; transition: height 0.3s ease, padding 0.3s ease;">
+            <ul style="list-style: none; padding: 0; margin: 0; padding-bottom: 20px;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                PostgreSQL
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                MySQL
+                </li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                MongoDB
+                </li>
+                <li style="padding: 10px 0; display: flex; align-items: center;">
+                <svg style="width: 16px; height: 16px; color: #3b82f6; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Database Optimization
+                </li>
+            </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <style>
+
+    .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    }
+    
+    .skill-card.active .dropdown-icon {
+        transform: rotate(180deg);
+    }
+    
+    .skill-card.active .skill-content {
+        height: auto;
+        padding: 0 20px 20px;
+    }
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const skillCards = document.querySelectorAll('.skill-card');
+        
+        skillCards.forEach(card => {
+        const header = card.querySelector('.skill-header');
+        const content = card.querySelector('.skill-content');
+        
+        // Calculate the exact height needed
+        const contentHeight = content.scrollHeight;
+        
+        header.addEventListener('click', () => {
+            if (card.classList.contains('active')) {
+            card.classList.remove('active');
+            content.style.height = '0';
+            } else {
+            // Close other open cards
+            skillCards.forEach(otherCard => {
+                if (otherCard !== card && otherCard.classList.contains('active')) {
+                otherCard.classList.remove('active');
+                otherCard.querySelector('.skill-content').style.height = '0';
+                }
+            });
+            
+            card.classList.add('active');
+            content.style.height = contentHeight + 'px';
+            
+            // After transition completes, set to auto to handle content changes
+            setTimeout(() => {
+                if (card.classList.contains('active')) {
+                content.style.height = 'auto';
+                }
+            }, 300);
+            }
+        });
+        });
+    });
+    </script>
+
+    <!-- Services Section -->
+    
+    <section id="services" style="padding: 80px 0; background: var(--bg-color, #f8fafc);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div style="text-align: center; margin-bottom: 60px;">
+        <h2 style="font-size: 2.5rem; color: var(--text-color, #1e293b); position: relative; display: inline-block;">
+            <span style="color: #2d2e30ff;">My</span> <span style="color: #3b82f6;">Services</span>
+            <span style="content: ''; display: block; width: 60px; height: 4px; background: #3b82f6; margin: 15px auto 0; border-radius: 2px;"></span>
+        </h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <!-- Web Development Service -->
+        <div class="service-card" style="background: var(--card-bg, #ffffff); padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid var(--border-color, #e2e8f0);">
+            <div style="width: 50px; height: 50px; background: #3b82f620; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <svg style="width: 24px; height: 24px; color: #3b82f6;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 8L3 12L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17 8L21 12L17 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 4L9.8589 19.4548" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 15px; color: var(--heading-color, #1e293b); font-weight: 600;">Web Development</h3>
+            <p style="color: var(--text-color, #64748b); line-height: 1.6; margin-bottom: 20px;">
+            Custom web applications using Django, Python, and modern JavaScript frameworks. Scalable backend systems with intuitive frontend interfaces.
+            </p>
+        </div>
+
+        <!-- Web Design Service -->
+
+        <div class="service-card" style="background: var(--card-bg, #ffffff); padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid var(--border-color, #e2e8f0);">
+            <div style="width: 50px; height: 50px; background: #3b82f620; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                <i class="bi bi-layout-text-window" style="font-size: 24px; color: #3b82f6;"></i>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 15px; color: var(--heading-color, #1e293b); font-weight: 600;">Web Design</h3>
+            <p style="color: var(--text-color, #64748b); line-height: 1.6; margin-bottom: 20px;">
+                Responsive designs with Tailwind CSS and Bootstrap. Beautiful interfaces that work perfectly across all devices.
+            </p>
+        </div>
+
+        <!-- WordPress Service -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+        <div class="service-card" style="background: var(--card-bg, #ffffff); padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid var(--border-color, #e2e8f0);">
+            <div style="width: 50px; height: 50px; background: #3b82f620; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                <i class="bi bi-wordpress" style="font-size: 24px; color: #3b82f6;"></i>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 15px; color: var(--heading-color, #1e293b); font-weight: 600;">WordPress</h3>
+            <p style="color: var(--text-color, #64748b); line-height: 1.6; margin-bottom: 20px;">
+                Custom theme development, plugin customization, and performance optimization for WordPress sites.
+            </p>
+        </div>
+
+        <!-- Shopify Service -->
+
+        <div class="service-card" style="background: var(--card-bg, #ffffff); padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid var(--border-color, #e2e8f0);">
+            <div style="width: 50px; height: 50px; background: #3b82f620; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                <i class="bi bi-cart-check" style="font-size: 24px; color: #3b82f6;"></i>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 15px; color: var(--heading-color, #1e293b); font-weight: 600;">Shopify</h3>
+            <p style="color: var(--text-color, #64748b); line-height: 1.6; margin-bottom: 20px;">
+                Complete Shopify solutions including theme customization, app integration, and store optimization.
+            </p>
+        </div>
+
+
+
+        <!-- Project Management Service -->
+        <div class="service-card" style="background: var(--card-bg, #ffffff); padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid var(--border-color, #e2e8f0);">
+            <div style="width: 50px; height: 50px; background: #3b82f620; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <svg style="width: 24px; height: 24px; color: #3b82f6;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 6H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 12H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 6H4.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 12H4.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 18H4.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 15px; color: var(--heading-color, #1e293b); font-weight: 600;">Project Management</h3>
+            <p style="color: var(--text-color, #64748b); line-height: 1.6; margin-bottom: 20px;">
+            End-to-end project planning and Agile workflow management to ensure timely delivery.
+            </p>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <style>
+    /* Default light mode styles */
+    .service-card {
+        background-color: white; /* Primary color white in light mode */
+        color: #333; /* Dark text for light background */
+        border: 1px solid #717479ff;
+        transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        border-color: #3b82f640;
+    }
+
+    /* Dark mode styles */
+    @media (prefers-color-scheme: dark) {
+        .service-card {
+        background-color: black; /* Black in dark mode */
+        color: #e2e8f0; /* Light text for dark background */
+        border-color: #3d3d3d;
+        }
+
+        .service-card:hover {
+        box-shadow: 0 10px 15px -3px rgba(255,255,255,0.1), 0 4px 6px -2px rgba(255,255,255,0.05);
+        }
+    }
+    </style>
+
+{% endblock %}
+

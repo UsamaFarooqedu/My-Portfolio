@@ -1,0 +1,1023 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Hero Section -->
+
+  <section class="hero" style="padding: 40px 0;">
+    <style>
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+
+      .hero-text,
+      .hero-image {
+        flex: 1 1 100%;
+      }
+
+      .hero-text {
+        padding-right: 0;
+      }
+
+      .hero-image {
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-image-inner {
+        width: 200px;
+        height: 200px;
+        position: relative;
+      }
+
+      .hero-image-inner div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+      }
+
+      .background-1 {
+        background: #73eaeeff;
+        transform: rotate(3deg);
+        z-index: 1;
+      }
+
+      .background-2 {
+        background: #73a2d1ff;
+        transform: rotate(-2deg);
+        z-index: 2;
+      }
+
+      .hero-image-inner img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        z-index: 3;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Responsive behavior for screens >= 768px */
+      @media (min-width: 768px) {
+        .hero-text,
+        .hero-image {
+          flex: 1;
+        }
+
+        .hero-text {
+          padding-right: 40px;
+        }
+
+        .hero-image {
+          justify-content: flex-end;
+        }
+      }
+    </style>
+
+    <div class="hero-text">
+      {% if head %}
+        <h1 style="font-size: 48px; margin-bottom: 10px; color: #4d93d8ff;">{{ head.name }}</h1>
+        <h2 style="font-size: 24px; color: #6c757d; margin-bottom: 20px;">{{ head.title }}</h2>
+        {% if head.file %}
+          <a href="{{ head.file.url }}" class="btn" style="background: linear-gradient(90deg, #17a2b8, #20c997); padding: 10px 20px; color: white; border-radius: 5px;" download>Download CV</a>
+        {% endif %}
+      {% endif %}
+    </div>
+
+  {% if head.image %}
+  <div class="hero-image-container">
+    <div class="hero-image">
+      <div class="hero-image-inner">
+        <div class="background-1"></div>
+        <div class="background-2"></div>
+        <img src="{{ head.image.url }}" alt="{{ head.name }}" class="profile-image" />
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <style>
+  .hero-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-image {
+    position: relative;
+    width: 280px; /* Increased from original */
+    height: 280px; /* Increased from original */
+  }
+
+  .hero-image-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+
+  .hero-image:hover .hero-image-inner {
+    transform: scale(1.05); /* Hover zoom effect */
+  }
+
+  .background-1,
+  .background-2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .background-1 {
+    background: #73eaee;
+    transform: rotate(3deg);
+    z-index: 1;
+  }
+
+  .background-2 {
+    background: #73a2d1;
+    transform: rotate(-2deg);
+    z-index: 2;
+  }
+
+  .profile-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    z-index: 3;
+    transition: all 0.3s ease;
+  }
+
+  .hero-image:hover .profile-image {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
+  }
+
+  /* Card size increase */
+  .about-card {
+    padding: 2.5rem; /* Increased padding */
+    min-height: 500px; /* Set minimum height */
+  }
+
+  .skill-section {
+    margin-bottom: 1.75rem; /* More spacing between sections */
+  }
+
+  .skill-title {
+    font-size: 1.3rem; /* Slightly larger titles */
+  }
+
+  @media (max-width: 768px) {
+    .hero-image {
+      width: 240px;
+      height: 240px;
+    }
+    
+    .about-card {
+      padding: 2rem;
+      min-height: auto;
+    }
+  }
+  </style>
+  </section>
+
+    <hr />
+    <hr />
+
+  <!-- About Section -->
+  
+  <section id="about" class="about-section">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+          {% if about %}
+          <div class="about-content">
+              <div class="about-image">
+                  {% if about.image %}
+                  <img src="{{ about.image.url }}" alt="{{ about.title }}" class="profile-img">
+                  {% endif %}
+              </div>
+              <div class="about-details">
+                  <div class="about-card">
+                      <p class="about-intro">
+                          I am a <strong class="highlight">Software Engineer</strong> with expertise in backend development, frontend design, CMS platforms, and project management.
+                      </p>
+
+                      <div class="skill-section">
+                          <h4 class="skill-title">
+                              <i class="bi bi-code-slash"></i> Backend Development
+                          </h4>
+                          <ul class="skill-list">
+                              <li><i class="bi bi-check-circle-fill"></i> Python, Django, Django REST Framework</li>
+                              <li><i class="bi bi-check-circle-fill"></i> Secure and scalable API development</li>
+                          </ul>
+                      </div>
+
+                      <div class="skill-section">
+                          <h4 class="skill-title">
+                              <i class="bi bi-laptop"></i> Frontend Development
+                          </h4>
+                          <ul class="skill-list">
+                              <li><i class="bi bi-check-circle-fill"></i> Responsive layouts (HTML, CSS)</li>
+                              <li><i class="bi bi-check-circle-fill"></i> Tailwind CSS & Bootstrap</li>
+                              <li><i class="bi bi-check-circle-fill"></i> Cross-browser compatibility</li>
+                          </ul>
+                      </div>
+
+                      <div class="skill-section">
+                          <h4 class="skill-title">
+                              <i class="bi bi-wordpress"></i> WordPress & Shopify
+                          </h4>
+                          <p class="skill-item"><i class="bi bi-check-circle-fill"></i> Website and eCommerce customization</p>
+                      </div>
+
+                      <div class="skill-section">
+                          <h4 class="skill-title">
+                              <i class="bi bi-kanban"></i> Project Management
+                          </h4>
+                          <ul class="skill-list">
+                              <li><i class="bi bi-check-circle-fill"></i> Agile & Scrum methodologies</li>
+                              <li><i class="bi bi-check-circle-fill"></i> Efficient project coordination & delivery</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {% endif %}
+      </div>
+  </section>
+
+  <!-- Services Section -->
+
+  <section id="services" class="services-section">
+      <div class="container">
+          <h2 class="section-title">My Services</h2>
+          <div class="services-grid">
+              {% for service in services %}
+              <div class="service-card">
+                  <div class="service-icon">
+                      <!-- Icon will be inserted here by JavaScript -->
+                  </div>
+                  <h3>{{ service.title }}</h3>
+                  <p class="service-description">{{ service.description|default:"Professional service tailored to your needs" }}</p>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
+  </section>
+
+  <style>
+  :root {
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f9fafb;
+      --border-color: #e5e7eb;
+      --highlight-color: #0d6efd;
+      --card-bg: #ffffff;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --card-hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark-mode {
+      --text-primary: #f3f4f6;
+      --text-secondary: #d1d5db;
+      --bg-primary: #1a202c;
+      --bg-secondary: #1e293b;
+      --border-color: #334155;
+      --highlight-color: #60a5fa;
+      --card-bg: #2d3748;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      --card-hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Base Styles */
+  body {
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      transition: color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+  }
+
+  .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
+  }
+
+  /* About Section */
+  .about-section {
+      padding: 5rem 0;
+      background-color: var(--bg-primary);
+  }
+
+  .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2.5rem;
+  }
+
+  .about-image {
+      flex: 1;
+      min-width: 300px;
+  }
+
+  .profile-img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+  }
+
+  .about-details {
+      flex: 2;
+      min-width: 300px;
+  }
+
+  .about-card {
+      padding: 2rem;
+      border: 1px solid var(--border-color);
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+  }
+
+  .about-intro {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      color: var(--text-primary);
+  }
+
+  .highlight {
+      color: var(--highlight-color);
+      font-weight: 600;
+  }
+
+  .skill-section {
+      margin-bottom: 1.25rem;
+  }
+
+  .skill-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--highlight-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  }
+
+  .skill-list {
+      padding-left: 1.25rem;
+      margin: 0;
+      list-style: none;
+  }
+
+  .skill-list li,
+  .skill-item {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      color: var(--text-primary);
+  }
+
+  .bi-check-circle-fill {
+      color: var(--highlight-color);
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+  }
+
+  /* Services Section */
+  .services-section {
+      padding: 5rem 0;
+      background-color: var(--bg-secondary);
+  }
+
+  .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      justify-content: center;
+  }
+
+  .service-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 6px rgba(10, 185, 216, 0.2); /* Changed to blue shadow */
+      border: 1px solid var(--border-color);
+  }
+
+  .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(8, 98, 233, 0.3); /* Changed to blue shadow */
+  }
+
+  .service-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--highlight-color), #20c997);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 4px 10px rgba(23, 162, 184, 0.3);
+  }
+
+  .service-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+  }
+
+  .service-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+      .about-content {
+          gap: 2rem;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .about-content {
+          flex-direction: column;
+      }
+      
+      .about-image, 
+      .about-details {
+          min-width: 100%;
+      }
+      
+      .about-card {
+          padding: 1.5rem;
+      }
+      
+      .services-grid {
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: 1.5rem;
+      }
+      
+      .service-card {
+          padding: 1.5rem 1rem;
+      }
+  }
+
+  @media (max-width: 480px) {
+      .services-grid {
+          grid-template-columns: 1fr;
+      }
+      
+      .section-title {
+          font-size: 1.75rem;
+      }
+  }
+  </style>
+
+  <script>
+  // Custom icon mapping for services
+  const iconMap = {
+      "Project Management": "fa-tasks",
+      "Project Handling": "fa-project-diagram",
+      "Web Customization": "fa-sliders-h",
+      "Shopify": "fa-shopping-cart",
+      "Wordpress": "fab fa-wordpress",
+      "Web Development": "fa-code",
+      "Web development": "fa-code",
+      "UI/UX Design": "fa-pencil-ruler",
+      "Consulting": "fa-chalkboard-teacher",
+      "Maintenance": "fa-tools"
+  };
+
+  // Add icons to service cards
+  document.addEventListener('DOMContentLoaded', function() {
+      const serviceCards = document.querySelectorAll('.service-card');
+      
+      serviceCards.forEach(card => {
+          const serviceName = card.querySelector('h3').textContent.trim();
+          const iconContainer = card.querySelector('.service-icon');
+          
+          // Find matching icon (case insensitive) or use default
+          const matchedKey = Object.keys(iconMap).find(key => 
+              key.toLowerCase() === serviceName.toLowerCase()
+          );
+          const iconClass = matchedKey ? iconMap[matchedKey] : 'fa-cog';
+          
+          // Create and insert icon
+          const icon = document.createElement('i');
+          icon.className = `fas ${iconClass}`;
+          icon.style.fontSize = '1.75rem';
+          icon.style.color = 'white';
+          icon.setAttribute('aria-hidden', 'true');
+          iconContainer.appendChild(icon);
+          
+          // Add aria-label for accessibility
+          iconContainer.setAttribute('aria-label', `${serviceName} icon`);
+      });
+  });
+  </script>
+
+  <br>
+  <!-- Skills Section -->
+    <hr />
+
+        <section id="skills" style="padding: 80px 0; background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 class="section-title" style="text-align: center; font-size: 2.8rem; margin-bottom: 60px; color: #212529; position: relative; font-weight: 700;">
+            My <span style="color: #17a2b8;">Skills</span>
+            <span style="content: ''; display: block; width: 80px; height: 4px; background: linear-gradient(90deg, #17a2b8, #20c997); margin: 20px auto 0; border-radius: 2px;"></span>
+            </h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px;">
+            {% for skill in skills %}
+            <div class="skill-card" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); position: relative; overflow: hidden; z-index: 1; border: 1px solid rgba(0,0,0,0.03);">
+                <!-- Decorative accent -->
+                <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, #17a2b8, #20c997);"></div>
+                
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                <div class="skill-icon-container" style="width: 60px; height: 60px; background: linear-gradient(135deg, #17a2b8 0%, #20c997 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 20px; flex-shrink: 0; box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);">
+                    <i class="skill-icon" data-skill="{{ skill.title|lower }}" style="font-size: 24px; color: white;"></i>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.3rem; margin: 0 0 5px 0; color: #212529; font-weight: 600;">{{ skill.title }}</h3>
+                    <span style="font-size: 1rem; color: #17a2b8; font-weight: 500;">{{ skill.proficiency }}% Mastery</span>
+                </div>
+                </div>
+                
+                <!-- Animated progress bar -->
+                <div style="height: 10px; background: rgba(233, 236, 239, 0.7); border-radius: 10px; margin-bottom: 20px; overflow: hidden; position: relative;">
+                <div style="height: 100%; width: {{ skill.proficiency }}%; background: linear-gradient(90deg, #17a2b8, #20c997); border-radius: 10px; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, 
+                    rgba(255,255,255,0.1) 0%, 
+                    rgba(255,255,255,0.3) 50%, 
+                    rgba(255,255,255,0.1) 100%);
+                    animation: shine 2.5s infinite;">
+                    </div>
+                </div>
+                </div>
+                
+                <p style="margin: 0; font-size: 0.95rem; color: #6c757d; line-height: 1.6;">{{ skill.description }}</p>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+        </section>
+
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <style>
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(15deg); }
+            100% { transform: translateX(100%) rotate(15deg); }
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .skill-icon-container:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+        </style>
+
+        <script>
+        // Smart icon mapping with better matching
+        const iconMapping = {
+        // Development
+        'frontend': 'fas fa-laptop-code',
+        'front end' : 'fas fa-laptop-code',
+        'backend development': ' fas fa-server',
+        
+        // Management
+        'project management': 'fas fa-tasks',
+        'project handling': 'fas fa-project-diagram',
+        
+        // CMS
+        'wordpress': 'fab fa-wordpress',
+        'shopify': 'fab fa-shopify',
+
+        // Tools
+        'tools using': 'fas fa-tools',
+        
+        // Default fallback
+        'default': 'fas fa-star'
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+        const skillIcons = document.querySelectorAll('.skill-icon');
+        
+        skillIcons.forEach(icon => {
+            const skillName = icon.getAttribute('data-skill').toLowerCase();
+            let matchedIcon = iconMapping['default'];
+            
+            // Find the best matching icon
+            for (const [key, value] of Object.entries(iconMapping)) {
+            if (skillName.includes(key)) {
+                matchedIcon = value;
+                break;
+            }
+            }
+            
+            icon.className = `skill-icon ${matchedIcon}`;
+        });
+        });
+        </script>
+        <br>
+    <!-- Clients/Projects Section -->
+        <hr/>
+
+  <section id="clients" class="clients-section">
+      <div class="clients-container">
+          <h2 class="section-title">
+              Client <span class="highlight">Projects</span>
+              <span class="title-underline"></span>
+          </h2>
+
+          <div class="carousel-wrapper">
+              <div class="carousel-track">
+                  {% for client in clients %}
+                  <div class="project-card">
+                      {% if client.image %}
+                      <div class="client-image">
+                          <img src="{{ client.image.url }}" alt="{{ client.name }}">
+                      </div>
+                      {% endif %}
+                      
+                      <h3>{{ client.name }}</h3>
+                      <h5>{{ client.project }}</h5>
+                      
+                      <div class="project-description">
+                          <p>&ldquo;{{ client.description|truncatechars:120 }}&rdquo;</p>
+                      </div>
+                      
+                      {% if client.website %}
+                      <a href="{{ client.website }}" target="_blank" class="project-link">
+                          View Project
+                          <svg class="link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                          </svg>
+                      </a>
+                      {% endif %}
+                  </div>
+                  {% endfor %}
+              </div>
+              
+              <button class="carousel-btn prev-btn">
+                  <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+              </button>
+              <button class="carousel-btn next-btn">
+                  <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M9 18L15 12L9 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+              </button>
+          </div>
+      </div>
+  </section>
+
+  <style>
+  .clients-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--bg-light, #f8f9fa) 0%, var(--bg-lighter, #f1f3f5) 100%);
+  }
+
+  .dark-mode .clients-section {
+      --bg-light: #1a202c;
+      --bg-lighter: #2d3748;
+  }
+
+  .clients-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+  }
+
+  .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--text-primary, #212529);
+      position: relative;
+  }
+
+  .highlight {
+      color: var(--primary-color, #17a2b8);
+  }
+
+  .title-underline {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color, #17a2b8), var(--secondary-color, #20c997));
+      margin: 1.25rem auto 0;
+      border-radius: 2px;
+  }
+
+  .carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      padding: 3rem 0;
+      margin: 0 -1rem;
+  }
+
+  .carousel-track {
+      display: flex;
+      transition: transform 0.6s ease;
+      gap: 1.5rem;
+      padding: 0 1rem;
+      align-items: center;
+  }
+
+  .project-card {
+      flex: 0 0 280px;
+      background: var(--card-bg, white);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+  }
+
+  .project-card.active {
+      transform: scale(1.05);
+      z-index: 2;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  }
+
+  .dark-mode .project-card {
+      --card-bg: #2d3748;
+  }
+
+  .client-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1.25rem;
+      border: 3px solid var(--primary-color, #17a2b8);
+  }
+
+  .client-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .project-card h3 {
+      font-size: 1.4rem;
+      margin: 0 0 0.625rem 0;
+      color: var(--text-primary, #212529);
+      font-weight: 600;
+  }
+
+  .project-card h5 {
+      font-size: 1.1rem;
+      margin: 0 0 1rem 0;
+      color: var(--text-secondary, #495057);
+      font-weight: 500;
+  }
+
+  .project-description {
+      height: 80px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+  }
+
+  .project-description p {
+      color: var(--text-tertiary, #6c757d);
+      line-height: 1.6;
+      font-style: italic;
+      margin: 0;
+      position: relative;
+  }
+
+  .project-link {
+      color: var(--primary-color, #17a2b8);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+  }
+
+  .project-link:hover {
+      color: var(--primary-dark, #138496);
+  }
+
+  .link-arrow {
+      width: 1rem;
+      height: 1rem;
+      margin-left: 0.375rem;
+      vertical-align: middle;
+      transition: transform 0.3s ease;
+  }
+
+  .project-link:hover .link-arrow {
+      transform: translateX(3px);
+  }
+
+  .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-color, #17a2b8), var(--secondary-color, #20c997));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
+      transition: all 0.3s ease;
+      opacity: 0.9;
+      z-index: 10;
+  }
+
+  .carousel-btn:hover {
+      opacity: 1;
+      transform: translateY(-50%) scale(1.1);
+  }
+
+  .prev-btn {
+      left: 1rem;
+  }
+
+  .next-btn {
+      right: 1rem;
+  }
+
+  @media (max-width: 992px) {
+      .project-card {
+          flex: 0 0 240px;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .section-title {
+          font-size: 2rem;
+      }
+      
+      .project-card {
+          flex: 0 0 280px;
+          min-height: auto;
+      }
+      
+      .carousel-btn {
+          width: 40px;
+          height: 40px;
+      }
+  }
+  </style>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const carouselTrack = document.querySelector('.carousel-track');
+      const prevBtn = document.querySelector('.prev-btn');
+      const nextBtn = document.querySelector('.next-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+      let currentIndex = 0;
+      let autoScrollInterval;
+      const cardWidth = 280 + 24; // card width + gap
+      
+      // Clone first and last cards for infinite loop
+      const firstCard = projectCards[0].cloneNode(true);
+      const lastCard = projectCards[projectCards.length - 1].cloneNode(true);
+      
+      carouselTrack.appendChild(firstCard);
+      carouselTrack.insertBefore(lastCard, carouselTrack.firstChild);
+      
+      // Update card positions and active state
+      function updateCarousel() {
+          const allCards = carouselTrack.querySelectorAll('.project-card');
+          const offset = -currentIndex * cardWidth;
+          carouselTrack.style.transform = `translateX(${offset}px)`;
+          
+          // Update active state for center card
+          allCards.forEach((card, index) => {
+              card.classList.remove('active');
+              if (index === currentIndex + 1) { // +1 because we added a clone at start
+                  card.classList.add('active');
+              }
+          });
+      }
+      
+      // Handle infinite loop
+      function handleInfiniteScroll() {
+          const totalCards = carouselTrack.querySelectorAll('.project-card').length;
+          
+          if (currentIndex >= projectCards.length) {
+              // Jump to first real card (not clone)
+              currentIndex = 0;
+              carouselTrack.style.transition = 'none';
+              updateCarousel();
+              setTimeout(() => {
+                  carouselTrack.style.transition = 'transform 0.6s ease';
+              }, 10);
+          } else if (currentIndex < 0) {
+              // Jump to last real card (not clone)
+              currentIndex = projectCards.length - 1;
+              carouselTrack.style.transition = 'none';
+              updateCarousel();
+              setTimeout(() => {
+                  carouselTrack.style.transition = 'transform 0.6s ease';
+              }, 10);
+          }
+      }
+      
+      // Auto-scroll
+      function startAutoScroll() {
+          clearInterval(autoScrollInterval);
+          autoScrollInterval = setInterval(() => {
+              currentIndex++;
+              updateCarousel();
+              handleInfiniteScroll();
+          }, 3000);
+      }
+      
+      // Navigation
+      prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          clearInterval(autoScrollInterval);
+          currentIndex--;
+          updateCarousel();
+          handleInfiniteScroll();
+          startAutoScroll();
+      });
+      
+      nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          clearInterval(autoScrollInterval);
+          currentIndex++;
+          updateCarousel();
+          handleInfiniteScroll();
+          startAutoScroll();
+      });
+      
+      // Initialize
+      currentIndex = 0;
+      updateCarousel();
+      startAutoScroll();
+      
+      // Pause on hover
+      const carouselWrapper = document.querySelector('.carousel-wrapper');
+      carouselWrapper.addEventListener('mouseenter', () => {
+          clearInterval(autoScrollInterval);
+      });
+      
+      carouselWrapper.addEventListener('mouseleave', () => {
+          startAutoScroll();
+      });
+      
+      // Fix cursor
+      carouselTrack.style.cursor = 'grab';
+      carouselTrack.addEventListener('mousedown', () => {
+          carouselTrack.style.cursor = 'grabbing';
+      });
+      document.addEventListener('mouseup', () => {
+          carouselTrack.style.cursor = 'grab';
+      });
+  });
+  </script>
+{% endblock %}

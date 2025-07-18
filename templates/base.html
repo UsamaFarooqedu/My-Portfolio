@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Professional portfolio showcasing my work and skills">
+    <meta name="keywords" content="portfolio, web developer, designer, projects">
+    <meta name="author" content="Usama Farooq">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        .nav-links a, .btn, .social-link {
+        min-height: 48px;
+        min-width: 48px;
+    }    
+
+        @media (max-width: 768px) {
+        body {
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        body {
+            font-size: 14px;
+        }
+    }
+
+        /* Improved Responsive Styles */
+    @media (max-width: 1024px) {
+        .container {
+            padding: 0 1.25rem;
+        }
+        
+        section {
+            padding: 3.5rem 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 0 1rem;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            padding: 0.65rem 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Improved mobile menu */
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--light-color);
+            padding: 1rem;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+        
+        .dark-mode .nav-links {
+            background-color: #2D3748;
+        }
+        
+        .nav-links.active {
+            display: flex;
+        }
+        
+        .nav-links a {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            justify-content: flex-start;
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+        }
+        
+        /* Footer adjustments */
+        footer {
+            padding: 2rem 0;
+        }
+        
+        .social-links {
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 0 0.75rem;
+        }
+        
+        section {
+            padding: 2.5rem 0;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+        }
+        
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            width: 42px;
+            height: 42px;
+            bottom: 1rem;
+            right: 1rem;
+        }
+        
+        /* Footer text */
+        .copyright {
+            font-size: 0.8rem;
+        }
+    }
+
+        :root {
+            --primary-color: #17a2b8;
+            --primary-dark: #138496;
+            --secondary-color: #20c997;
+            --accent-color: #6C63FF;
+            --dark-color: #2D3748;
+            --light-color: #F7FAFC;
+            --gray-color: #718096;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --nav-height: 80px;
+        }
+        
+        /* Dark mode variables */
+        .dark-mode {
+            --dark-color: #E2E8F0;
+            --light-color: #1A202C;
+            --gray-color: #A0AEC0;
+        }
+
+        /* Add these new dark mode overrides */
+        .dark-mode #about {
+            background-color: var(--light-color);
+        }
+
+        .dark-mode #services {
+            background: #2D3748 !important;
+        }
+
+        .dark-mode #services .section-title {
+            color: var(--dark-color) !important;
+        }
+
+        .dark-mode #skills {
+            background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%) !important;
+        }
+
+        .dark-mode #skills .section-title,
+        .dark-mode #skills .section-title span {
+            color: var(--dark-color) !important;
+        }
+
+        .dark-mode .skill-card {
+            background: #2D3748 !important;
+            border: 1px solid rgba(255,255,255,0.05) !important;
+        }
+
+        .dark-mode .skill-card h3,
+        .dark-mode .skill-card p {
+            color: var(--dark-color) !important;
+        }
+
+        .dark-mode #clients {
+            background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%) !important;
+        }
+
+        .dark-mode #clients .section-title,
+        .dark-mode #clients .section-title span {
+            color: var(--dark-color) !important;
+        }
+
+        .dark-mode .project-card {
+            background: #2D3748 !important;
+            border: 1px solid rgba(255,255,255,0.05) !important;
+        }
+
+        .dark-mode .project-card h3,
+        .dark-mode .project-card h5,
+        .dark-mode .project-card p {
+            color: var(--dark-color) !important;
+        }
+
+        .dark-mode .project-card a {
+            color: var(--primary-color) !important;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            -webkit-font-smoothing: antialiased;
+            padding-top: var(--nav-height);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Dark mode toggle button */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            border: none;
+            transition: var(--transition);
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: scale(1.1) rotate(30deg);
+        }
+        
+        .dark-mode-toggle i {
+            font-size: 1.25rem;
+        }
+        
+        /* Rest of your existing CSS remains the same */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(247, 250, 252, 0.95);
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            transition: transform 0.4s ease, background-color 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .dark-mode .header {
+            background-color: rgba(26, 32, 44, 0.95);
+        }
+        
+        .header.hide {
+            transform: translateY(-100%);
+        }
+        
+        .header.scrolled {
+            background-color: rgba(247, 250, 252, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark-mode .header.scrolled {
+            background-color: rgba(44, 54, 73, 0.98);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            height: var(--nav-height);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: calc(var(--border-radius) - 4px);
+        }
+        
+        .logo:hover {
+            color: var(--primary-dark);
+            background-color: rgba(23, 162, 184, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            border-radius: calc(var(--border-radius) - 4px);
+        }
+        
+        .nav-links a i {
+            font-size: 1.1rem;
+            width: 20px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+            background-color: rgba(23, 162, 184, 0.05);
+        }
+        
+        .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+            background-color: rgba(23, 162, 184, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark-color);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: calc(var(--border-radius) - 4px);
+        }
+        
+        .mobile-menu-btn:hover {
+            color: var(--primary-color);
+            background-color: rgba(23, 162, 184, 0.05);
+        }
+        
+        main {
+            min-height: calc(100vh - 160px);
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        /* In your existing CSS, find the footer section and add/modify these styles */
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode footer {
+            background-color: #2D3748; /* Or any other color you prefer */
+            color: var(--gray-color); /* Adjust text color if needed */
+        }
+
+        /* If you want to keep the social links visible in dark mode */
+        .dark-mode .social-link {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .dark-mode .social-link:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-link {
+            color: white;
+            transition: var(--transition);
+            font-size: 1.25rem;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-link:hover {
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            color: var(--gray-color);
+            font-size: 0.875rem;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, var(--primary-dark), #1ba588);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn i {
+            font-size: 1rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 1.5rem;
+                box-shadow: var(--shadow-md);
+                align-items: flex-start;
+                gap: 1rem;
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+            }
+            
+            .dark-mode .nav-links {
+                background-color: #2D3748;
+            }
+            
+            .nav-links a {
+                padding: 0.75rem 1rem;
+                width: 100%;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .dark-mode-toggle {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Floating Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <header class="header">
+        <div class="container">
+            <nav>
+                <a href="{% url 'home' %}" class="logo">
+                    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.644 1.59a.75.75 0 01.712 0l9.75 5.25a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.712 0l-9.75-5.25a.75.75 0 010-1.32l9.75-5.25z" />
+                        <path d="M3.265 10.602l7.668 4.129a2.25 2.25 0 002.134 0l7.668-4.13 1.37.739a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.71 0l-9.75-5.25a.75.75 0 010-1.32l1.37-.738z" />
+                        <path d="M10.933 19.231l-7.668-4.13-1.37.739a.75.75 0 000 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 000-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 01-2.134-.001z" />
+                    </svg>
+                    <span class="logo-text">My Portfolio</span>
+                </a>
+                
+                <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links">
+                    <li><a href="{% url 'home' %}" class=""><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="{% url 'about' %}"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="{% url 'projects' %}"><i class="fas fa-code"></i> Projects</a></li>
+                    <li><a href="{% url 'contact' %}"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Dribbble">
+                        <i class="fab fa-dribbble"></i>
+                    </a>
+                </div>
+                <p class="copyright">&copy; {% now "Y" %} Usama Farooq. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar hide on scroll
+        const header = document.querySelector('.header');
+        let lastScrollY = window.scrollY;
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                if (lastScrollY < window.scrollY) {
+                    header.classList.add('hide');
+                } else {
+                    header.classList.remove('hide');
+                }
+            }
+            
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScrollY = window.scrollY;
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            this.innerHTML = this.innerHTML.includes('times') ? 
+                '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Dark mode toggle
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved user preference or use system preference
+        const currentTheme = localStorage.getItem('theme') || 
+                            (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        darkModeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+            
+            if (theme === 'dark') {
+                this.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                this.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+    </script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

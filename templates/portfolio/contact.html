@@ -1,0 +1,430 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="contact-section">
+  <div class="container">
+    <h1 class="section-title">Get in Touch</h1>
+    <p class="section-subtitle">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
+
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <div class="contact-card">
+        <form method="post" class="contact-form">
+          {% csrf_token %}
+          <h2 class="form-title">Send a Message</h2>
+          
+          <div class="form-group">
+            {{ form.name }}
+            <span class="focus-border"></span>
+            {% if form.name.errors %}
+              <div class="error-message">{{ form.name.errors }}</div>
+            {% endif %}
+          </div>
+          
+          <div class="form-group">
+            {{ form.email }}
+            <span class="focus-border"></span>
+            {% if form.email.errors %}
+              <div class="error-message">{{ form.email.errors }}</div>
+            {% endif %}
+          </div>
+          
+          <div class="form-group">
+            {{ form.phone }}
+            <span class="focus-border"></span>
+          </div>
+          
+          <div class="form-group">
+            {{ form.message }}
+            <span class="focus-border"></span>
+            {% if form.message.errors %}
+              <div class="error-message">{{ form.message.errors }}</div>
+            {% endif %}
+          </div>
+          
+          <button type="submit" class="btn btn-primary">
+            Send Message
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="contact-info">
+        <!-- Contact Card -->
+        <div class="info-card">
+          <h3>Contact Information</h3>
+          <div class="contact-method">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 6L12 13L2 6" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:usamafarooqedu@.com">usamafarooqedu@.com</a>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 16.92V19C22 19.5304 21.7893 20.0391 21.4142 20.4142C21.0391 20.7893 20.5304 21 20 21H19C9.61116 21 3 14.3888 3 5V4C3 3.46957 3.21071 2.96086 3.58579 2.58579C3.96086 2.21071 4.46957 2 5 2H8C8.53043 2 9.03914 2.21071 9.41421 2.58579C9.78929 2.96086 10 3.46957 10 4V8C10 8.53043 9.78929 9.03914 9.41421 9.41421C9.03914 9.78929 8.53043 10 8 10H6C6 13.866 9.13401 17 13 17H14C14.5304 17 15.0391 16.7893 15.4142 16.4142C15.7893 16.0391 16 15.5304 16 15V13C16 12.4696 16.2107 11.9609 16.5858 11.5858C16.9609 11.2107 17.4696 11 18 11H20C20.5304 11 21.0391 11.2107 21.4142 11.5858C21.7893 11.9609 22 12.4696 22 13V16.92Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+923178413173">+92 317 8413173</a>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <h4>Location</h4>
+              <span>Remote (Worldwide)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Availability -->
+        <div class="availability-card">
+          <h3>Working Hours</h3>
+          <ul class="availability-list">
+            <li>
+              <span>Monday - Friday</span>
+              <span>9:00 AM - 5:00 PM</span>
+            </li>
+            <li>
+              <span>Saturday</span>
+              <span>10:00 AM - 3:00 PM</span>
+            </li>
+            <li>
+              <span>Sunday</span>
+              <span>Closed</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding: 5rem 0;
+    background-color: var(--light-color);
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-color);
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--gray-color);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .form-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    margin: 0.75rem auto 0;
+    border-radius: 3px;
+  }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+  }
+
+  .form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    background-color: white;
+  }
+
+  .focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+  }
+
+  .form-group input:focus ~ .focus-border,
+  .form-group textarea:focus ~ .focus-border {
+    width: 100%;
+  }
+
+  .error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-primary:hover svg {
+    transform: translateX(4px);
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .info-card,
+  .availability-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .info-card:hover,
+  .availability-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .info-card h3,
+  .availability-card h3 {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .contact-method {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-method:last-child {
+    margin-bottom: 0;
+  }
+
+  .contact-method svg {
+    flex-shrink: 0;
+  }
+
+  .contact-method h4 {
+    font-size: 1rem;
+    color: var(--dark-color);
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-method a,
+  .contact-method span {
+    color: var(--gray-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .contact-method a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+
+  .availability-list {
+    list-style: none;
+  }
+
+  .availability-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .availability-list li:last-child {
+    border-bottom: none;
+  }
+
+  .availability-list span:first-child {
+    font-weight: 500;
+    color: var(--dark-color);
+  }
+
+  .availability-list span:last-child {
+    color: var(--gray-color);
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .section-subtitle {
+      font-size: 1rem;
+    }
+    
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Form validation
+    const form = document.querySelector('.contact-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        let isValid = true;
+        
+        // Validate name
+        const name = form.querySelector('input[name="name"]');
+        if (!name.value.trim()) {
+          showError(name, 'Please enter your name');
+          isValid = false;
+        }
+        
+        // Validate email
+        const email = form.querySelector('input[name="email"]');
+        if (!email.value.trim()) {
+          showError(email, 'Please enter your email');
+          isValid = false;
+        } else if (!isValidEmail(email.value)) {
+          showError(email, 'Please enter a valid email');
+          isValid = false;
+        }
+        
+        // Validate message
+        const message = form.querySelector('textarea[name="message"]');
+        if (!message.value.trim()) {
+          showError(message, 'Please enter your message');
+          isValid = false;
+        }
+        
+        if (!isValid) {
+          e.preventDefault();
+        }
+      });
+      
+      // Real-time validation
+      const inputs = form.querySelectorAll('input, textarea');
+      inputs.forEach(input => {
+        input.addEventListener('input', function() {
+          clearError(this);
+          
+          if (this.name === 'email' && this.value.trim() && !isValidEmail(this.value)) {
+            showError(this, 'Please enter a valid email');
+          }
+        });
+      });
+    }
+    
+    function isValidEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+    
+    function showError(input, message) {
+      const formGroup = input.closest('.form-group');
+      if (!formGroup) return;
+      
+      let error = formGroup.querySelector('.error-message');
+      if (!error) {
+        error = document.createElement('div');
+        error.className = 'error-message';
+        formGroup.appendChild(error);
+      }
+      
+      error.textContent = message;
+      input.style.borderColor = '#dc3545';
+    }
+    
+    function clearError(input) {
+      const formGroup = input.closest('.form-group');
+      if (!formGroup) return;
+      
+      const error = formGroup.querySelector('.error-message');
+      if (error) {
+        error.remove();
+      }
+      
+      input.style.borderColor = '#e2e8f0';
+    }
+  });
+</script>
+{% endblock %}
